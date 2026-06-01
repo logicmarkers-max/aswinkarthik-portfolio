@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aswin Karthik — Azure Lead & Healthcare Integrations Expert</title>
+  <meta name="description" content="Aswin Karthik — Azure Lead Engineer specialising in NHS Integrations, EMAR, AWS/Azure Cloud Architecture, and Micro-SaaS." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='50' fill='%23000000'%3EAK%3Ctspan fill='%2300e5a0'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       TOKENS & RESET (Dark Bluish/Slate Theme)
+    ============================================================ */
+    :root {
+      --bg:        #0f172a; 
+      --bg2:       rgba(30, 41, 59, 0.4);
+      --surface:   rgba(30, 41, 59, 0.65);
+      --line:      rgba(255, 255, 255, 0.1);
+      
+      --accent:    #00e5a0; /* Mint */
+      --accent2:   #6c7dff; /* Soft Indigo */
+      --accent3:   #ff5f57; /* Rose/Coral */
+      
+      --white:     #ffffff; 
+      --muted:     rgba(240, 240, 245, 0.65); 
+      
+      --font-head: 'Syne', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --font-body: 'Fraunces', serif;
+      --ease:      cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--white);
+      background: var(--bg);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    ::selection { background: var(--accent2); color: #fff; }
+
+    /* ============================================================
+       FULL-SITE CANVAS BACKGROUND
+    ============================================================ */
+    #site-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    #main-nav, #hero, section, footer {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* ============================================================
+       CUSTOM CURSOR
+    ============================================================ */
+    body.custom-cursor, 
+    body.custom-cursor a, 
+    body.custom-cursor button, 
+    body.custom-cursor .btn, 
+    body.custom-cursor .tech-pill,
+    body.custom-cursor .venture-card {
+      cursor: none;
+    }
+
+    #cursor, #cursor-ring {
+      display: none; 
+    }
+
+    body.custom-cursor #cursor {
+      display: block;
+      position: fixed;
+      width: 12px; height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s var(--ease), width 0.25s var(--ease), height 0.25s var(--ease), background 0.25s;
+      mix-blend-mode: difference;
+    }
+    
+    body.custom-cursor #cursor-ring {
+      display: block;
+      position: fixed;
+      width: 40px; height: 40px;
+      border: 1.5px solid rgba(0, 229, 160, 0.45);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s var(--ease), width 0.35s var(--ease), height 0.35s var(--ease), opacity 0.3s;
+    }
+
+    body.custom-cursor:has(a:hover) #cursor-ring,
+    body.custom-cursor:has(button:hover) #cursor-ring,
+    body.custom-cursor:has(.tech-pill:hover) #cursor-ring,
+    body.custom-cursor:has(.hamburger:hover) #cursor-ring { 
+      width: 60px; height: 60px; opacity: 0.6; 
+    }
+
+    /* ============================================================
+       NOISE OVERLAY
+    ============================================================ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.02; 
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: transparent;
+      transition: all 0.4s var(--ease);
+    }
+    nav.scrolled {
+      padding: 14px 48px;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line); 
+    }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-decoration: none;
+      z-index: 901;
+    }
+    .nav-logo span { color: var(--accent); } 
+    
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.25s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: width 0.3s var(--ease);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 901;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white); 
+      transition: 0.3s var(--ease);
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 48px; 
+      overflow: hidden;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 1200px;
+      z-index: 10;
+      position: relative;
+    }
+
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent); 
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s var(--ease) forwards;
+    }
+    .hero-status::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-name {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(3rem, 7.5vw, 9rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.5s var(--ease) forwards;
+      color: var(--white);
+    }
+    .hero-name .line2 {
+      display: inline-block; 
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 0;
+    }
+
+    .hero-desc {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.7s var(--ease) forwards;
+    }
+    
+    .hero-desc p {
+      font-family: var(--font-body);
+      font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+      font-weight: 300; 
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 750px;
+    }
+    .hero-desc p strong { color: var(--white); font-weight: 700; }
+
+    /* ============================================================
+       INNOVATIVE HERO MARQUEE (Tech Ecosystem)
+    ============================================================ */
+    .hero-marquee-container {
+      width: 100%;
+      max-width: 800px;
+      overflow: hidden;
+      position: relative;
+      margin-top: 8px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.8s var(--ease) forwards;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .hero-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: heroMarquee 35s linear infinite;
+    }
+    
+    .hero-marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes heroMarquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .tech-pill {
+      padding: 10px 18px;
+      margin-right: 12px;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      transition: all 0.3s var(--ease);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .tech-pill:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .tech-pill::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent2);
+      transition: background 0.3s;
+    }
+    .tech-pill:hover::before {
+      background: var(--accent);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s var(--ease);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0f172a;
+    }
+    .btn-primary:hover { 
+      background: var(--white); 
+      color: #0f172a; 
+      transform: translateY(-2px); 
+      box-shadow: 0 8px 24px rgba(0, 229, 160, 0.2);
+    }
+    .btn-ghost {
+      border: 1px solid var(--line);
+      color: var(--white);
+      background: var(--bg2);
+      backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover { 
+      border-color: var(--accent2); 
+      color: var(--accent2); 
+      transform: translateY(-2px); 
+      background: var(--surface);
+    }
+
+    .hero-metadata {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+      opacity: 0;
+      animation: fadeUp 0.9s 0.9s var(--ease) forwards;
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-left: 2px solid var(--accent2);
+      padding-left: 16px;
+    }
+    .meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .meta-value {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--white);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      right: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+      opacity: 0;
+      animation: fadeUp 1s 1.2s var(--ease) forwards;
+      z-index: 10;
+    }
+    .hero-scroll::before {
+      content: '';
+      width: 2px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--accent2));
+      animation: scrollLine 2s 1.5s infinite var(--ease);
+    }
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================================
+       SECTION COMMONS
+    ============================================================ */
+    section {
+      padding: 120px 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent2); 
+      margin-bottom: 56px;
+    }
+    .section-label::before {
+      content: '';
+      width: 32px; height: 2px;
+      background: var(--accent2);
+    }
+    .section-heading {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    /* ============================================================
+       ABOUT & STAT CARDS
+    ============================================================ */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-left .section-heading { margin-bottom: 40px; }
+    .about-left p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .about-left p strong { color: var(--white); }
+
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding-top: 80px;
+    }
+    .stat-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px 32px;
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      transition: border-color 0.3s, transform 0.3s var(--ease), box-shadow 0.3s;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.4s var(--ease);
+    }
+    .stat-card:hover::before { transform: scaleY(1); }
+    .stat-card:hover { 
+      border-color: rgba(0, 229, 160, 0.4); 
+      transform: translateX(4px); 
+    }
+
+    .stat-number {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 2.8rem;
+      color: var(--white); 
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted); 
+    }
+
+    /* ============================================================
+       EXPERTISE
+    ============================================================ */
+    #expertise { border-top: 1px solid var(--line); }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .expertise-card {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 44px 36px;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease);
+    }
+    .expertise-card:hover { 
+      background: rgba(20, 20, 31, 0.9); 
+      border-color: rgba(108, 125, 255, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .expertise-icon {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+      background: rgba(255,255,255,0.05);
+    }
+    .expertise-card:nth-child(1) .expertise-icon { color: var(--accent); }
+    .expertise-card:nth-child(2) .expertise-icon { color: var(--accent2); }
+    .expertise-card:nth-child(3) .expertise-icon { color: var(--accent3); }
+    .expertise-card:nth-child(4) .expertise-icon { color: var(--accent2); }
+    .expertise-card:nth-child(5) .expertise-icon { color: var(--accent); }
+    .expertise-card:nth-child(6) .expertise-icon { color: var(--accent3); }
+
+    .expertise-card h3 {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.15rem;
+      margin-bottom: 14px;
+    }
+    .expertise-card p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.4);
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+    .expertise-card:hover .tag { 
+      border-color: rgba(108, 125, 255, 0.3); 
+      color: var(--white); 
+      background: rgba(108, 125, 255, 0.15);
+    }
+
+    /* ============================================================
+       TIMELINE / EXPERIENCE
+    ============================================================ */
+    #experience { border-top: 1px solid var(--line); }
+
+    .timeline {
+      margin-top: 56px;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent2), transparent);
+    }
+
+    .timeline-item {
+      padding-left: 48px;
+      padding-bottom: 60px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+    }
+    .timeline-item.visible { opacity: 1; transform: translateY(0); }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -5px; top: 6px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--accent2);
+      box-shadow: 0 0 0 4px rgba(108, 125, 255, 0.2);
+    }
+
+    .timeline-period {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 8px;
+    }
+    .timeline-role {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.25rem;
+      margin-bottom: 4px;
+    }
+    .timeline-company {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .timeline-body {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 800px;
+      padding: 20px 24px;
+      border-radius: 12px;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+    .timeline-body strong { color: var(--white); font-weight: 700;}
+
+    /* ============================================================
+       VENTURES
+    ============================================================ */
+    #ventures { border-top: 1px solid var(--line); }
+
+    .ventures-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .venture-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 44px;
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      transition: border-color 0.35s, transform 0.35s var(--ease), box-shadow 0.35s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .venture-card::after {
+      content: '↗';
+      position: absolute;
+      top: 32px; right: 32px;
+      font-size: 1.2rem;
+      color: var(--muted);
+      transition: color 0.3s, transform 0.3s var(--ease);
+    }
+    .venture-card:hover { 
+      border-color: rgba(108, 125, 255, 0.4); 
+      transform: translateY(-4px); 
+      background: rgba(20, 20, 31, 0.9);
+    }
+    .venture-card:hover::after { color: var(--accent); transform: translate(3px, -3px); }
+
+    .venture-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .badge-live { background: rgba(0, 229, 160, 0.1); color: var(--accent); border: 1px solid rgba(0, 229, 160, 0.3); }
+    .badge-wip  { background: rgba(108, 125, 255, 0.1); color: var(--accent2); border: 1px solid rgba(108, 125, 255, 0.3); }
+    .badge-review { background: rgba(255, 95, 87, 0.1); color: var(--accent3); border: 1px solid rgba(255, 95, 87, 0.3); }
+
+    .venture-card h3 {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .venture-card p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .venture-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .venture-card.featured h3 { font-size: 2.4rem; }
+
+    /* The visual container with 1:1 aspect ratio perfectly framing the uploaded logo */
+    .venture-visual {
+      background: rgba(20, 20, 31, 0.5);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      position: relative;
+      aspect-ratio: 1 / 1; 
+      max-width: 340px; 
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 0;
+    }
+    .venture-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: drop-shadow(0 0 15px rgba(0, 229, 160, 0.15));
+    }
+
+    /* ============================================================
+       STACK
+    ============================================================ */
+    #stack { border-top: 1px solid var(--line); }
+
+    .stack-groups {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+    }
+
+    .stack-group h4 {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stack-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .stack-list li {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: color 0.2s;
+    }
+    .stack-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--line); 
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .stack-list li:hover { color: var(--white); }
+    .stack-list li:hover::before { background: var(--accent); }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    #contact {
+      border-top: 1px solid var(--line);
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .contact-heading {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+    }
+    .contact-heading .stroke {
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.2); 
+    }
+
+    .contact-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto 48px;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .contact-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.3s var(--ease);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .social-link:hover {
+      border-color: var(--accent2);
+      color: #ffffff;
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(108, 125, 255, 0.25);
+    }
+    .social-link svg { width: 16px; height: 16px; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(20px);
+    }
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    footer p span { color: var(--accent); }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ============================================================
+       RESPONSIVE & MOBILE MENU
+    ============================================================ */
+    @media (max-width: 1024px) {
+      nav { padding: 20px 28px; }
+      nav.scrolled { padding: 14px 28px; }
+      #hero { padding: 0 28px; }
+      
+      section { padding: 80px 28px; }
+      footer { padding: 28px; flex-direction: column; gap: 16px; text-align: center; }
+
+      #about { grid-template-columns: 1fr; gap: 40px; }
+      .about-right { padding-top: 0; flex-direction: row; flex-wrap: wrap; }
+      .stat-card { flex: 1; min-width: 140px; }
+      .expertise-grid { grid-template-columns: 1fr 1fr; }
+      .stack-groups { grid-template-columns: 1fr 1fr; }
+      .ventures-grid { grid-template-columns: 1fr; }
+      .venture-card.featured { grid-column: auto; display: block; }
+      
+      .venture-visual {
+        max-width: 100%;
+        margin-top: 32px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-name { font-size: clamp(2.5rem, 9vw, 8rem); }
+      .hero-cta { flex-direction: row; flex-wrap: wrap; }
+      .hero-metadata { flex-direction: column; gap: 20px; align-items: flex-start; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .stack-groups { grid-template-columns: 1fr; gap: 24px; }
+      
+      /* Mobile Menu */
+      .hamburger { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 100%; height: 100vh;
+        background: rgba(15, 23, 42, 0.98); 
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: right 0.4s var(--ease);
+      }
+      .nav-links.active { right: 0; }
+      .nav-links a { font-size: 1.4rem; color: var(--white); }
+      
+      /* Hamburger Animation */
+      .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--accent); }
+      .hamburger.active span:nth-child(2) { opacity: 0; }
+      .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--accent); }
+    }
+
+    /* ============================================================
+       ACCESSIBILITY: REDUCED MOTION
+    ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal, .timeline-item { opacity: 1; transform: translateY(0); }
+      .hero-marquee-track { animation: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Full Site Interactive Canvas -->
+  <canvas id="site-canvas"></canvas>
+
+  <!-- Cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="#" class="nav-logo">AK<span>.</span></a>
+    
+    <!-- Mobile Hamburger -->
+    <button class="hamburger" aria-label="Toggle menu" id="hamburger-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#ventures">Ventures</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header id="hero">
+    <div class="hero-content">
+      <div class="hero-status">Azure Lead Engineer</div>
+      <h1 class="hero-name">
+        Aswin <span class="line2">Karthik</span>
+      </h1>
+
+      <div class="hero-desc">
+        <p>
+          Accomplished <strong>Azure Lead & Integrations Expert</strong> with 14 years building systems that matter. Specialized in NHS Spine (Proxy Ordering), EMAR, and Care Planning. Currently modernizing monolithic .NET architectures into scalable Python AWS Event-Based Systems.
+        </p>
+        
+        <!-- Inline Hero Marquee for Tech Stack -->
+        <div class="hero-marquee-container">
+          <div class="hero-marquee-track">
+            <!-- Set 1 -->
+            <span class="tech-pill">Azure Cloud</span>
+            <span class="tech-pill">AWS EventBridge</span>
+            <span class="tech-pill">NHS Spine Proxy</span>
+            <span class="tech-pill">C# / .NET 9</span>
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Terraform (IaC)</span>
+            <span class="tech-pill">Convenet (Datavant)</span>
+            <span class="tech-pill">HL7 ADT/ORM</span>
+            <!-- Set 2 (Duplicate for seamless loop) -->
+            <span class="tech-pill">Azure Cloud</span>
+            <span class="tech-pill">AWS EventBridge</span>
+            <span class="tech-pill">NHS Spine Proxy</span>
+            <span class="tech-pill">C# / .NET 9</span>
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Terraform (IaC)</span>
+            <span class="tech-pill">Convenet (Datavant)</span>
+            <span class="tech-pill">HL7 ADT/ORM</span>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Get in touch</a>
+          <a href="#ventures" class="btn btn-ghost">My ventures</a>
+        </div>
+        
+        <div class="hero-metadata">
+          <div class="meta-item">
+            <span class="meta-label">Current Role</span>
+            <span class="meta-value">Azure Lead Engineer</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Ventures</span>
+            <span class="meta-value">Micro-SaaS Portfolio</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Base</span>
+            <span class="meta-value">Bangalore / Hosur</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">Scroll</div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-left">
+      <div class="section-label">About Me</div>
+      <h2 class="section-heading reveal">Engineer.<br>Architect.<br>Founder.</h2>
+      <p class="reveal reveal-delay-1">
+        I'm an <strong>Azure Lead & Integrations Expert</strong> based in Bangalore, India, with over 14 years of experience delivering end-to-end software solutions — specialising in <strong>UK healthcare integrations</strong> that power real patient care outcomes.
+      </p>
+      <p class="reveal reveal-delay-1">
+        At <strong>Camascope India Private Limited</strong>, I lead complex HL7-based integrations with the NHS Spine, EMAR systems (Boots, Titan), and Care Planning platforms (Nourish, PCS) — managing the complete project lifecycle from architecture design to Infrastructure-as-Code (Terraform) and production deployment.
+      </p>
+      <p class="reveal reveal-delay-2">
+        Before this, I spent years consulting across <strong>Banking, Life Sciences, and HiTech</strong> domains at TCS and Eurofins/ITC Infotech in the UK, US, and France — utilizing tools like AppDynamics to resolve performance bottlenecks and orchestrate seamless automated deployments.
+      </p>
+      <p class="reveal reveal-delay-2">
+        Outside of my day role, I co-founded <strong>LogicMarkers</strong> with my wife — exploring SaaS, developer tools, and consulting opportunities across healthcare tech and software niches.
+      </p>
+    </div>
+    <div class="about-right">
+      <div class="stat-card reveal">
+        <div class="stat-number">14<span style="color:var(--muted);font-size:1.4rem">+</span></div>
+        <div class="stat-label">Years of Engineering</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-1">
+        <div class="stat-number">50<span style="color:var(--muted);font-size:1.4rem">+</span></div>
+        <div class="stat-label">NHS & UK Integrations Delivered</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-2">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Countries Worked Across</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Active Ventures</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise">
+    <div class="section-label">What I Do</div>
+    <h2 class="section-heading reveal">Core Expertise</h2>
+
+    <div class="expertise-grid reveal">
+      <div class="expertise-card">
+        <div class="expertise-icon">🏥</div>
+        <h3>NHS & Healthcare Integrations</h3>
+        <p>Expert in EMAR integrations (Boots, Proscript, RxWeb, Titan) and Care Planning platforms (Nourish, PCS, KareInn). Utilizing Convenet (Datavant) for seamless proxy ordering and NHS Spine connectivity.</p>
+        <div class="tag-group">
+          <span class="tag">NHS Spine</span>
+          <span class="tag">HL7 ADT/ORM</span>
+          <span class="tag">Convenet</span>
+          <span class="tag">EMAR</span>
+        </div>
+      </div>
+
+      <div class="expertise-card">
+        <div class="expertise-icon">☁️</div>
+        <h3>Cloud Architecture Modernization</h3>
+        <p>Architecting scalable solutions and leading strategic migrations from monolithic .NET/C# Azure setups to modern, agile Python-based Event-Driven architectures on AWS.</p>
+        <div class="tag-group">
+          <span class="tag">Azure Migration</span>
+          <span class="tag">AWS Transition</span>
+          <span class="tag">Microservices</span>
+          <span class="tag">Clean Architecture</span>
+        </div>
+      </div>
+
+      <div class="expertise-card">
+        <div class="expertise-icon">⚡</div>
+        <h3>Event-Driven Systems</h3>
+        <p>Designing highly decoupled, resilient systems using modern messaging and event routing to handle high-throughput healthcare data with zero data loss.</p>
+        <div class="tag-group">
+          <span class="tag">AWS EventBridge</span>
+          <span class="tag">SQS / SNS</span>
+          <span class="tag">Azure Service Bus</span>
+          <span class="tag">CQRS</span>
+        </div>
+      </div>
+
+      <div class="expertise-card">
+        <div class="expertise-icon">⚙️</div>
+        <h3>Infrastructure & DevOps</h3>
+        <p>Acquired DevOps expertise to independently design infrastructure with Infrastructure-as-Code, optimizing CI/CD pipelines to improve workflows and reduce time-to-market.</p>
+        <div class="tag-group">
+          <span class="tag">Terraform (IaC)</span>
+          <span class="tag">YAML CI/CD</span>
+          <span class="tag">Azure App Services</span>
+          <span class="tag">AppDynamics</span>
+        </div>
+      </div>
+
+      <div class="expertise-card">
+        <div class="expertise-icon">💻</div>
+        <h3>Core Development</h3>
+        <p>Production-grade backend engineering with a focus on modern frameworks, secure REST APIs, and database optimization (SQL execution plans, Cosmos DB, Redis Cache).</p>
+        <div class="tag-group">
+          <span class="tag">C# / .NET 9</span>
+          <span class="tag">Python</span>
+          <span class="tag">Entity Framework</span>
+          <span class="tag">REST APIs</span>
+        </div>
+      </div>
+
+      <div class="expertise-card">
+        <div class="expertise-icon">🚀</div>
+        <h3>SaaS & Product Thinking</h3>
+        <p>Building beyond the job — maintaining a portfolio of Micro-SaaS applications and developer tooling. Applying a product mindset to identify real market needs and build solutions for them.</p>
+        <div class="tag-group">
+          <span class="tag">Micro-SaaS</span>
+          <span class="tag">Developer Tools</span>
+          <span class="tag">Startup Strategy</span>
+          <span class="tag">GTM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">Career</div>
+    <h2 class="section-heading reveal">Where I've Been</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-period">Jan 2022 — Present</div>
+        <div class="timeline-role">Lead Software Engineer (Azure & Integrations)</div>
+        <div class="timeline-company">Camascope India Private Limited · Bangalore, India</div>
+        <div class="timeline-body">
+          Leading the Integrations between healthcare products, serving as both an individual contributor and team mentor. Delivered multiple backend EMAR and Care Planning integrations (Boots, Titan, Nourish) using HL7 protocols. Currently spearheading a strategic architectural migration from a <strong>.NET Azure monolith to a Python-based Event-Driven architecture on AWS</strong>. Designed end-to-end solutions utilizing APIM, Function Apps, and Terraform (IaC).
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-period">Nov 2019 — Jan 2022</div>
+        <div class="timeline-role">Senior Software Developer / Lead Consultant</div>
+        <div class="timeline-company">Eurofins IT Solutions / ITC Infotech · France & India</div>
+        <div class="timeline-body">
+          Worked as a lead team member to design and enhance scalable Life Science applications. Delivered robust solutions utilizing <strong>C#, .Net, MVVM, WPF, SQL, and REST services</strong>. Improved product efficiency by analyzing AppDynamics analytics data to resolve critical performance bottlenecks and orchestrated seamless automated deployments.
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-period">Jan 2012 — Oct 2019</div>
+        <div class="timeline-role">Assistant Consultant</div>
+        <div class="timeline-company">Tata Consultancy Services (TCS) · UK, USA & France</div>
+        <div class="timeline-body">
+          Developed and enhanced scalable applications across <strong>Banking & Finance, Healthcare, and HiTech Automation</strong> domains. Delivered seamless third-party API integrations, maintained regulatory compliance, and managed complex MS SQL banking data analysis. Orchestrated builds using Terraform and YAML, ensuring robust cloud performance.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENTURES -->
+  <section id="ventures">
+    <div class="section-label">Side Ventures</div>
+    <h2 class="section-heading reveal">What I'm Building</h2>
+
+    <div class="ventures-grid">
+      <!-- Featured -->
+      <a href="https://logicmarkers.com" target="_blank" rel="noopener noreferrer" class="venture-card featured reveal">
+        <div>
+          <h3>LogicMarkers</h3>
+          <p>A product & consulting venture co-founded with my wife — exploring SaaS opportunities at the intersection of healthcare tech and developer tooling. Currently building an NHS Integration Health Monitor: a SaaS dashboard tracking uptime, compliance, and alerts across NHS API endpoints.</p>
+          <div class="tag-group">
+            <span class="tag">NHS SaaS</span>
+            <span class="tag">Azure</span>
+            <span class="tag">UK HealthTech</span>
+            <span class="tag">G-Cloud</span>
+          </div>
+        </div>
+        <div class="venture-visual">
+          <img src="Logo_Updated.png" alt="LogicMarkers Logo">
+        </div>
+      </a>
+
+      <!-- TabShelf -->
+      <a href="https://chromewebstore.google.com/detail/tabshelf/jekiljjneaeplekbkneapiedbbebfjng" target="_blank" rel="noopener noreferrer" class="venture-card reveal reveal-delay-1">
+        <h3>TabShelf</h3>
+        <p>A Chrome extension for intelligent tab management — organise, shelve, and restore tab sessions without losing context. Designed for developers and power users.</p>
+        <div class="tag-group">
+          <span class="tag">Chrome Extension</span>
+          <span class="tag">Productivity</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </a>
+
+      <!-- SnapGuid -->
+      <a href="https://chromewebstore.google.com/detail/uuid-generator-%E2%80%93-snapguid/dkpfbljmfdckcmlfgpciaofbogmejbeo" target="_blank" rel="noopener noreferrer" class="venture-card reveal reveal-delay-2">
+        <h3>SnapGuid</h3>
+        <p>A developer-focused GUID generator Chrome extension with context-menu integration and one-click copy. Freemium model targeting developer teams with B2B licensing potential.</p>
+        <div class="tag-group">
+          <span class="tag">Chrome Extension</span>
+          <span class="tag">Developer Tools</span>
+          <span class="tag">Freemium</span>
+        </div>
+      </a>
+
+      <!-- SwiftCareID -->
+      <a href="https://chromewebstore.google.com/detail/swiftcareid-secure-id-gen/jnjigjjhopkebcgekappokjiccaijljg" target="_blank" rel="noopener noreferrer" class="venture-card reveal reveal-delay-1">
+        <h3>SwiftCareID</h3>
+        <p>A robust and secure ID generator extension designed to streamline data entry and record management workflows with precision and reliability.</p>
+        <div class="tag-group">
+          <span class="tag">Chrome Extension</span>
+          <span class="tag">Healthcare Tech</span>
+          <span class="tag">Security</span>
+        </div>
+      </a>
+
+      <!-- Bellyful -->
+      <a href="#" class="venture-card reveal reveal-delay-2">
+        <h3>Bellyful / VishCaramel</h3>
+        <p>A comprehensive Point of Sale (POS) and billing system architected specifically for restaurant management. Focused on seamless UI layout and robust transaction processing.</p>
+        <div class="tag-group">
+          <span class="tag">POS System</span>
+          <span class="tag">Architecture</span>
+          <span class="tag">FinTech</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section id="stack">
+    <div class="section-label">Technology</div>
+    <h2 class="section-heading reveal">My Stack</h2>
+
+    <div class="stack-groups reveal">
+      <div class="stack-group">
+        <h4>Languages & Frameworks</h4>
+        <ul class="stack-list">
+          <li>C# / .NET 9</li>
+          <li>.NET Core / Framework</li>
+          <li>Python</li>
+          <li>WPF / MVVM</li>
+          <li>Entity Framework / LINQ</li>
+        </ul>
+      </div>
+
+      <div class="stack-group">
+        <h4>Cloud & DevOps</h4>
+        <ul class="stack-list">
+          <li>Microsoft Azure</li>
+          <li>AWS (S3, Lambda)</li>
+          <li>Terraform (IaC)</li>
+          <li>YAML CI/CD</li>
+          <li>AppDynamics Insights</li>
+        </ul>
+      </div>
+
+      <div class="stack-group">
+        <h4>Integration & Healthcare</h4>
+        <ul class="stack-list">
+          <li>NHS Spine / Proxy Ordering</li>
+          <li>HL7 (ADT, ORM)</li>
+          <li>Convenet (Datavant)</li>
+          <li>EventBridge / SQS / SNS</li>
+          <li>Azure Service Bus</li>
+        </ul>
+      </div>
+
+      <div class="stack-group">
+        <h4>Platforms & Tools</h4>
+        <ul class="stack-list">
+          <li>Azure API Management</li>
+          <li>Azure SQL / Cosmos DB</li>
+          <li>Redis In-Memory Cache</li>
+          <li>REST APIs / JSON / XML</li>
+          <li>Azure B2C / Identity</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="margin: 0 auto;">
+    <div class="section-label">Get In Touch</div>
+
+    <h2 class="contact-heading reveal">
+      Let's<br>
+      <span class="stroke">work</span><br>
+      together.
+    </h2>
+
+    <p class="contact-sub reveal reveal-delay-1">
+      Open to senior engineering roles, UK healthcare tech contracts, consulting engagements, and conversations about LogicMarkers.
+    </p>
+
+    <div class="contact-links reveal reveal-delay-2">
+      <a href="mailto:aswinkarthik.j@outlook.com" class="social-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Email Me
+      </a>
+      <a href="https://www.linkedin.com/in/aswinkarthikj" target="_blank" rel="noopener noreferrer" class="social-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/aswinkarthikj" target="_blank" rel="noopener noreferrer" class="social-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a href="https://logicmarkers.com" target="_blank" rel="noopener noreferrer" class="social-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        LogicMarkers
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <span>Aswin Karthik</span> · Bangalore, India</p>
+    <p>Built with <span>precision</span> · Azure Lead & Healthcare Integrations Expert</p>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script>
+    // Accessibility: Custom Cursor Fallback
+    if (window.matchMedia("(pointer: fine)").matches) {
+      document.body.classList.add('custom-cursor');
+      
+      const cursor = document.getElementById('cursor');
+      const ring   = document.getElementById('cursor-ring');
+      let mx = 0, my = 0, rx = 0, ry = 0;
+
+      window.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx + 'px';
+        cursor.style.top  = my + 'px';
+      });
+
+      function animateRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + 'px';
+        ring.style.top  = ry + 'px';
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+    }
+
+    // Mobile Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const navLinksList = document.getElementById('nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('active');
+      navLinksList.classList.toggle('active');
+    });
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        navLinksList.classList.remove('active');
+      });
+    });
+
+    // Nav scroll effect
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Reveal on scroll
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (!prefersReducedMotion) {
+      const reveals = document.querySelectorAll('.reveal, .timeline-item');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      reveals.forEach(el => observer.observe(el));
+
+      document.querySelectorAll('.timeline-item').forEach((el, i) => {
+        el.style.transitionDelay = `${i * 0.12}s`;
+      });
+    }
+
+    // Interactive Full-Site Canvas Network
+    const canvas = document.getElementById('site-canvas');
+    if (canvas && !prefersReducedMotion) {
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+      
+      const vibrantColors = [
+        '#00e5a0', 
+        '#6c7dff', 
+        '#ff5f57', 
+        '#d946ef', 
+        '#0ea5e9'  
+      ];
+
+      const mouse = { x: -1000, y: -1000, radius: 140 };
+
+      function resizeCanvas() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', () => {
+        resizeCanvas();
+        initCanvas(); 
+      });
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.8;
+          this.vy = (Math.random() - 0.5) * 0.8;
+          this.baseRadius = Math.random() * 2.5 + 1.5;
+          this.radius = this.baseRadius;
+          this.color = vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
+        }
+        update() {
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+          this.x += this.vx;
+          this.y += this.vy;
+
+          let dx = mouse.x - this.x;
+          let dy = mouse.y - this.y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < mouse.radius) {
+            let forceDirectionX = dx / distance;
+            let forceDirectionY = dy / distance;
+            let force = (mouse.radius - distance) / mouse.radius;
+            let directionX = forceDirectionX * force * 3;
+            let directionY = forceDirectionY * force * 3;
+            
+            this.x -= directionX;
+            this.y -= directionY;
+            this.radius = this.baseRadius * (1 + force * 2.5); 
+          } else {
+            if (this.radius > this.baseRadius) {
+              this.radius -= 0.1;
+            }
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+      }
+
+      function initCanvas() {
+        resizeCanvas();
+        particles = [];
+        const numParticles = width < 768 ? 70 : 140;
+        for (let i = 0; i < numParticles; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function animateCanvas() {
+        ctx.clearRect(0, 0, width, height);
+        
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+          
+          for (let j = i; j < particles.length; j++) {
+            let dx = particles[i].x - particles[j].x;
+            let dy = particles[i].y - particles[j].y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < 110) {
+              ctx.beginPath();
+              let opacity = 0.2 - (distance / 110) * 0.2;
+              ctx.strokeStyle = `rgba(108, 125, 255, ${opacity})`;
+              ctx.lineWidth = 1;
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animateCanvas);
+      }
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      
+      window.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+      });
+
+      initCanvas();
+      animateCanvas();
+    }
+  </script>
+</body>
+</html>
